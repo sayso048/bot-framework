@@ -45,11 +45,11 @@ export default class Module {
 
         var data = fs.readFileSync(`./data/${this.taskProxyFile}.txt`).toString();
         if (data) {
-            var lines = await data.split('\n');
-            var proxyData = await lines[Math.floor(Math.random() * lines.length)];
-            var password = await proxyData.split(':')[3].split(', ').toString();
-            var realPassword = await password.replace('\r', '');
-            var proxy = await `http://${proxyData.split(':')[2].split(', ').toString()}:${realPassword}@${proxyData.split(':')[0].split(', ').toString()}:${proxyData.split(':')[1].split(', ').toString()}`
+            var lines = data.split('\n');
+            var proxyData = lines[Math.floor(Math.random() * lines.length)];
+            var password = proxyData.split(':')[3].split(', ').toString();
+            var realPassword = password.replace('\r', '');
+            var proxy = `http://${proxyData.split(':')[2].split(', ').toString()}:${realPassword}@${proxyData.split(':')[0].split(', ').toString()}:${proxyData.split(':')[1].split(', ').toString()}`
             this.taskProxy = proxy;
             return true;
 

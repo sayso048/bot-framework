@@ -9,6 +9,5 @@ export default async function taskRun(taskId, taskProxyFile, taskPid, taskDelay,
 
     if (taskData.taskIsPassable = true) {
         //move forward
-
     }
 };
