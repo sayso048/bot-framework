@@ -15,7 +15,7 @@ async function createTasks() {
 
 async function readTasks() {
     await createTasks();
-    data = fs.readFileSync('./data/tasks.json');
+    data = JSON.parse(fs.readFileSync('./data/tasks.json', 'utf-8'));
     return data
 
 }
@@ -37,4 +37,3 @@ async function formTasks() {
     await formTasks();
 })
     ();
-
