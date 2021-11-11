@@ -15,21 +15,20 @@ async function createTasks() {
 
 async function readTasks() {
     await createTasks();
-    setTimeout(function () {
-        data = JSON.parse(fs.readFileSync('./data/tasks.json'));
-    }, 100);
+    data = fs.readFileSync('./data/tasks.json');
+    return data
+
 }
 
 
 async function formTasks() {
-    setTimeout(async function () {
-        data.forEach(async function (element, index) {
-            if (element.site == 'SITEKEY') {
-                await taskRun(index + 1, element.proxyFile, element.pid, element.taskDelay, element.monitorDelay, element.email, element.shipSameBill, element.accountEmail, element.accountPassword, element.shippingPhone, element.shippingFirstName, element.shippingLastName, element.shippingAddress, element.shippingCity, element.shippingZip, element.shippingState, element.shippingCountry, element.billingPhone, element.billingFirstName, element.billingLastName, element.billingAddress, element.billingCity, element.billingZip, element.billingState, element.billingCountry, element.cardNumber, element.cardExpiryMonth, element.cardExpiryYear, element.cardCVV);
-            }
-        });
-    }, 300);
+    data.forEach(async function (element, index) {
+        if (element.site == 'SITEKEY') {
+            await taskRun(index + 1, element.proxyFile, element.pid, element.taskDelay, element.monitorDelay, element.email, element.shipSameBill, element.accountEmail, element.accountPassword, element.shippingPhone, element.shippingFirstName, element.shippingLastName, element.shippingAddress, element.shippingCity, element.shippingZip, element.shippingState, element.shippingCountry, element.billingPhone, element.billingFirstName, element.billingLastName, element.billingAddress, element.billingCity, element.billingZip, element.billingState, element.billingCountry, element.cardNumber, element.cardExpiryMonth, element.cardExpiryYear, element.cardCVV);
+        }
+    });
 }
+
 
 
 

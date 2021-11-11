@@ -54,9 +54,7 @@ export default class Module {
             this.taskProxy = proxy;
 
             //convert to http and store
-            return this.taskIsPassable = await setTimeout(function () {
-                return true;
-            }, 500);
+            return true
         } else {
             console.log('No Proxies Found');
             return this.taskIsPassable = false;
